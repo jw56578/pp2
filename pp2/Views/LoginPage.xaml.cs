@@ -57,6 +57,12 @@ namespace pp2.Views
             Inputs.Children.Insert(6,password);
 
         }
+
+        async void Handle_ForgotPasswordClicked(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new ForgotPasswordPage());
+        }
+
         async void Handle_LoginClicked(object sender, System.EventArgs e)
         {
             viewModel.IsBusy = true;
@@ -84,6 +90,8 @@ namespace pp2.Views
                 //save info permanently
                 Settings.IsRegistered = true;
                 Settings.TenancyName = creds.TenancyName;
+                Settings.Username = creds.Username;
+                Settings.Password = creds.Password;
                 viewModel.IsBusy = false;
                 viewModel.Message = "Going to dashbaord";          
                 await Navigation.PushAsync(new Dashboard());

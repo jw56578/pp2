@@ -7,6 +7,11 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Android.Gms.Common;
+using Firebase.Messaging;
+using Firebase.Iid;
+using Android.Util;
+using Firebase;
 
 namespace pp2.Droid
 {
@@ -19,26 +24,23 @@ namespace pp2.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             RemoveStatusBar();
-            IgnoreSSL();
-
+           
             base.OnCreate(bundle);
+            Functions.GoogleApi.IsPlayServicesAvailable(this);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
             LoadApplication(new App());
             //part of removing status bar
             this.Window.AddFlags(WindowManagerFlags.Fullscreen | WindowManagerFlags.TurnScreenOn);
+          
         }
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
         }
-        void IgnoreSSL()
-        {
-            System.Net.ServicePointManager.ServerCertificateValidationCallback = (s,c,chain,p) => true;
-
-        }
+      
         void RemoveStatusBar()
         {
             //https://forums.xamarin.com/discussion/83688/cannot-truely-hide-the-status-bar-on-android

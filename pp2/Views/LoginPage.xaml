@@ -109,7 +109,7 @@
                 HorizontalOptions="End"
                 BorderColor="Transparent"
                 BackgroundColor="Transparent"
-               
+                Clicked="Handle_ForgotPasswordClicked"
                 Scale="0.8"/>
                 <StackLayout>
                 <ActivityIndicator 

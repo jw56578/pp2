@@ -43,7 +43,30 @@ namespace pp2.Data
                 Set("TenancyName", value);
             }
         }
+        public static string Username
+        {
 
+            get
+            {
+                return Get<string>("Username");
+            }
+            set
+            {
+                Set("Username", value);
+            }
+        }
+        public static string Password
+        {
+
+            get
+            {
+                return Get<string>("Password");
+            }
+            set
+            {
+                Set("Password", value);
+            }
+        }
         static T Get<T>(string key)
         {
             if (!App.Current.Properties.ContainsKey(key))
@@ -52,7 +75,7 @@ namespace pp2.Data
         }
         static void Set(string key,object value)
         {
-            App.Current.Properties["IsAuthenticated"] = value;
+            App.Current.Properties[key] = value;
         }
     }
 }

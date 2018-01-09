@@ -11,7 +11,7 @@ namespace pp2.Views
         public Dashboard()
         {
             InitializeComponent();
-            string url = string.Format(Settings.DefaultUrl, "demoaccount", "demoaccount", "vuteur");
+            string url = string.Format(Settings.DefaultUrl, Settings.Username, Settings.Password, Settings.TenancyName);
             Browser.Source = url;
         }
     }
