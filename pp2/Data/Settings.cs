@@ -67,6 +67,7 @@ namespace pp2.Data
                 Set("Password", value);
             }
         }
+
         static T Get<T>(string key)
         {
             if (!App.Current.Properties.ContainsKey(key))
