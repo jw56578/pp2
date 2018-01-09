@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="pp2.Views.LoginPage" 
+    xmlns:vm="clr-namespace:pp2;" 
+    NavigationPage.HasNavigationBar="false"
+    Title="{Binding Title}">
+    <AbsoluteLayout 
+           
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand">
+            <Image 
+                AbsoluteLayout.LayoutFlags="All" 
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                Source="background_login_page.jpg" 
+                Aspect="AspectFill"/>
+    <Grid 
+    
+        AbsoluteLayout.LayoutFlags="All" 
+        AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+            >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout 
+          
+            BackgroundColor="Transparent" 
+            VerticalOptions="FillAndExpand" 
+            HorizontalOptions="Fill">
+            <StackLayout 
+                 
+                Orientation="Horizontal" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center">
+                <ContentView 
+                    Margin="0,10,0,0"
+                    VerticalOptions="FillAndExpand">
+                    <Image 
+                    Source="main_logo.png" 
+                    VerticalOptions="Center" 
+                    HeightRequest="64" />
+                </ContentView>
+            </StackLayout>
+        </StackLayout>
+        <ScrollView Grid.Row="1">
+            <StackLayout x:Name="Inputs"
+                Orientation="Vertical" 
+                Padding="16,40,16,40" 
+                Spacing="10">
+                <Label FontSize="22" >
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span 
+                                    Text="Welcome to your VuTeur account"
+                                    ForegroundColor="Black"
+                                    FontAttributes="Bold" 
+                                    FontSize="22" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span 
+                                  ForegroundColor="Black"    
+                                  Text="Campus Key" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Username" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+               
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Password" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+              
+                <Button 
+                Margin="0,10,0,0" 
+                Text="Login" 
+                BackgroundColor="#cb4040" 
+                TextColor="White"
+                Clicked="Handle_LoginClicked"
+                />
+                <Button 
+                TextColor="#cb4040" 
+                Text="Forgot Password"    
+                HorizontalOptions="End"
+                BorderColor="Transparent"
+                BackgroundColor="Transparent"
+               
+                Scale="0.8"/>
+                <StackLayout>
+                <ActivityIndicator 
+                    IsVisible="{Binding IsBusy}" 
+                    IsRunning="{Binding IsBusy}"
+                    VerticalOptions="FillAndExpand" 
+                    HorizontalOptions="FillAndExpand" />
+                <Label 
+                    IsVisible="{Binding string.IsNullOrEmpty(Message).Equals(false)}"         
+                    BackgroundColor="White"
+                    x:Name="LoadingMessage" 
+                    Text="{Binding Message}"
+                    ></Label>
+              </StackLayout>  
+            </StackLayout>
+           
+                
+        </ScrollView>
+    </Grid>
+        </AbsoluteLayout>
+</ContentPage>
