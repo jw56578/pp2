@@ -16,9 +16,9 @@ namespace pp2.Views
         {
             InitializeComponent();
             BindingContext = viewModel = new LoginViewModel(){
-                UsernameOrEmailAddress = "demoaccount",
-                Password = "demoaccount",
-                TenancyName= "vuteur"
+                UsernameOrEmailAddress = Settings.TestingUsername,
+                Password = Settings.TestingPassword,
+                TenancyName= Settings.TestingCampusKey
             };
            
           AddEntries();
