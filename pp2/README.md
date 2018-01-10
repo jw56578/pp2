@@ -8,8 +8,7 @@
 
 
 
-how do you do this in ios
-https://components.xamarin.com/gettingstarted/firebaseioscloudmessaging
+
 
 ## Features
 * created a custom renderer for a NoHelpEntry to use in ios so that it doesnt capitalize and upper case things

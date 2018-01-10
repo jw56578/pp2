@@ -10,6 +10,7 @@ namespace pp2.Views
         public ForgotPasswordPage()
         {
             InitializeComponent();
+            //webview will not work unless the url is https
             string url = pp2.Data.Settings.ForgotPasswordUrl;
             Browser.Source = url;
         }

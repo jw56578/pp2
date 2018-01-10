@@ -11,6 +11,7 @@ namespace pp2.Views
         public Dashboard()
         {
             InitializeComponent();
+            //webview will not work unless the url is https
             string url = string.Format(Settings.DefaultUrl, Settings.Username, Settings.Password, Settings.TenancyName);
             Browser.Source = url;
         }

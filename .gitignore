@@ -1,6 +1,7 @@
 
 pp2/Data/PrivateSettings.cs
 Droid/google-services.json
+IOS/GoogleService-Info.plist
 
 # Autosave files
 *~
