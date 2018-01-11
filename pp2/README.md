@@ -2,7 +2,7 @@
 
 * cannot get ssl http request to work through httpclient, it worked fine on android but then it didn't', i have coded it to ignore ssl , not sure if this will affect something
 * the returned message of logging in is ackward, success is always true, the only way to tell if its a problem is if error has a value
-
+* when you close app and go back to it, it goes to the login screen
 
 
 
@@ -23,25 +23,11 @@
 
 
 ## 2 Registration
-* verify that registration is working
-Following are the responses from this call (do not show any response, just forward user
-to the existing login URL with a busy screen message of “Loading VuTeur…”)
-Success = 1,
-LoginFailure = 2,
-MissingData = 3,
-CouldNotParseGeoLocation = 4,
-NotOnCampus = 5,
-NotAssociatedToAnyServers = 6,
-NotAssociatedToAnyCampuses = 7,
-NoServerConfiguredForGeo = 8,
-NoMatchOnIp = 9
-* If response above is “1”, cache that the user has been successfully registered and don’t
-call this registration process again, otherwise keep trying to register to get all data
-
+* I'm sending all the info, but im never getting back a success code', I always get 3
 
 
 ## 3 Browser
-* toolbar at bottom of the screen?
+* toolbar at bottom of the screen? android already has a toolbar.
 * The arrow should take you back to the previous screen in the browser’s history
 * The house should take you to the “#/” (root bookmark so whole site is not reloaded)
 * The right icon should be replaced with anything that indicates refresh and it should refresh the current screen
@@ -49,9 +35,8 @@ call this registration process again, otherwise keep trying to register to get a
 
 ## 4 Push Notifications
 
-* read original requirements
-* get push notifications working for IOS
-* no idea what you are talking about with badges
+* read original requirements,  no idea what you are talking about with badges
+* get push notifications working for IOS. followed docs and it just doesn't work, do i need a real device that is provisioned?
 
 
 ## 5 Tracking

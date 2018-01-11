@@ -24,5 +24,15 @@ namespace pp2.Functions
             var jsonObject = Newtonsoft.Json.JsonConvert.DeserializeObject<JObject>(jsonText);
             return jsonObject;
         }
+        public async static Task<string> PostJsonForString(string url, Dictionary<string, string> body)
+        {
+            System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();//new ModernHttpClient.NativeMessageHandler());
+            var json = JsonConvert.SerializeObject(body);
+            var content = new System.Net.Http.StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync(url, content);
+            string jsonText = "";
+            jsonText = await response.Content.ReadAsStringAsync();
+            return jsonText;
+        }
     }
 }

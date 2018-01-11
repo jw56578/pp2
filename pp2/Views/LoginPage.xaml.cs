@@ -86,29 +86,35 @@ namespace pp2.Views
             var creds = await Authentication.AttemptToAuthenticate(viewModel.UsernameOrEmailAddress,viewModel.Password,viewModel.TenancyName);
             if(creds.IsAuthenticated)
             {
-                string longlat = await ThisDevice.GetLongLatString();
+                if (Settings.IsRegistered)
+                {
+                    string longlat = await ThisDevice.GetLongLatString();
 
-                viewModel.Message = "Log in successful, registering device";
-                creds = await Authentication.Register(new Credentials(){
-                    Username = creds.Username,
-                    Password = creds.Password,
-                    TenancyName = creds.TenancyName,
-                    IpAddress = ThisDevice.GetLocalIPAddress(),
-                    MAC = ThisDevice.GetMAC(),
-                    Version = ThisDevice.GetOSVersion(),
-                    Device = ThisDevice.GetDescription(),
-                    GeoLocation = longlat
+                    viewModel.Message = "Log in successful, registering device";
+                    creds = await Authentication.Register(new Credentials()
+                    {
+                        Username = creds.Username,
+                        Password = creds.Password,
+                        TenancyName = creds.TenancyName,
+                        IpAddress = ThisDevice.GetLocalIPAddress(),
+                        MAC = ThisDevice.GetMAC(),
+                        Version = ThisDevice.GetOSVersion(),
+                        Device = ThisDevice.GetDescription(),
+                        GeoLocation = longlat
 
 
-                });
-                viewModel.Message = "Device registered";
-                //save info permanently
-                Settings.IsRegistered = true;
-                Settings.TenancyName = creds.TenancyName;
-                Settings.Username = creds.Username;
-                Settings.Password = creds.Password;
-                viewModel.IsBusy = false;
-                viewModel.Message = "Going to dashbaord";          
+                    });
+                    viewModel.Message = "Device registered";
+                    //save info permanently
+                    Settings.IsRegistered = true;
+                    Settings.TenancyName = creds.TenancyName;
+                    Settings.Username = creds.Username;
+                    Settings.Password = creds.Password;
+                    Settings.IsRegistered = creds.IsRegistered;
+                    viewModel.IsBusy = false;
+                    viewModel.Message = "Going to dashbaord";
+
+                }
                 await Navigation.PushAsync(new Dashboard());
                 //i don't want the user to be able to go back to this page
                 Navigation.RemovePage(this);

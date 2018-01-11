@@ -29,13 +29,27 @@ namespace pp2.Droid
             Functions.GoogleApi.IsPlayServicesAvailable(this);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-
+           
             LoadApplication(new App());
+            //attempt to hide navigation buttons, needs to be called after loadapplication
+            HideNavigationButtons();
             //part of removing status bar
             this.Window.AddFlags(WindowManagerFlags.Fullscreen | WindowManagerFlags.TurnScreenOn);
           
         }
+        //https://stackoverflow.com/questions/39248138/how-to-hide-bottom-bar-of-android-back-home-in-xamarin-forms
+        void HideNavigationButtons()
+        {
+            int uiOptions = (int)Window.DecorView.SystemUiVisibility;
 
+            uiOptions |= (int)SystemUiFlags.LowProfile;
+            uiOptions |= (int)SystemUiFlags.Fullscreen;
+            uiOptions |= (int)SystemUiFlags.HideNavigation;
+            uiOptions |= (int)SystemUiFlags.ImmersiveSticky;
+
+            Window.DecorView.SystemUiVisibility = (StatusBarVisibility)uiOptions;
+
+        }
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);

@@ -32,7 +32,7 @@ namespace pp2.Functions
         }
         public async static Task<Credentials>Register(Credentials registration)
         {
-            var response = await HTTP.PostJson(Settings.LoginUrl, new Dictionary<string, string>(){
+            var response = await Api.PostJsonForString(Settings.RegisterUrl, new Dictionary<string, string>(){
                 {"TenancyName", registration.TenancyName},
                 {"UserName", registration.Username},
                 {"Password",registration.Password},
@@ -43,8 +43,7 @@ namespace pp2.Functions
                 {"Ver",registration.Version}
 
             });
-            var error = response["error"];
-            var message = error["message"].ToString();
+            registration.IsRegistered = response == "1";
             return registration;
         }
     }
