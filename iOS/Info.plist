@@ -22,9 +22,9 @@
 	<key>CFBundleDisplayName</key>
 	<string>pp2</string>
 	<key>CFBundleName</key>
-	<string>pp2</string>
+	<string>VuTeurMobile</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.vuteur.pp2</string>
+	<string>com.vuteur.VuTeurMobile</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>

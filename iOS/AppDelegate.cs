@@ -24,8 +24,15 @@ namespace pp2.iOS
             Firebase.Core.App.Configure();
 
             RegisterForFirebaseNotifications();
-            ConnectToFirebase();
-            var token = InstanceId.SharedInstance.Token;
+           
+            InstanceId.Notifications.ObserveTokenRefresh((sender, e) => {
+                // Note that this callback will be fired everytime a new token is generated, including the first
+                // time. So if you need to retrieve the token as soon as it is available this is where that
+                // should be done.
+                var refreshedToken = InstanceId.SharedInstance.Token;
+                ConnectToFirebase();
+                // Do your magic to refresh the token where is needed
+            });
 
 
 
@@ -35,7 +42,7 @@ namespace pp2.iOS
         }
         public void DidRefreshRegistrationToken(Messaging messaging, string fcmToken)
         {
-
+           
         }
         public void ConnectToFirebase()
         {
@@ -60,7 +67,7 @@ namespace pp2.iOS
                 UNUserNotificationCenter.Current.Delegate = this;
 
                 // For iOS 10 data message (sent via FCM)
-                Firebase.CloudMessaging.Messaging.SharedInstance.RemoteMessageDelegate = this;
+                Firebase.CloudMessaging.Messaging.SharedInstance.Delegate = this;
             }
             else
             {
