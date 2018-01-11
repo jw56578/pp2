@@ -13,3 +13,7 @@ https://developer.xamarin.com/guides/android/data-and-cloud-services/google-mess
 
 
 * https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Instance_ID_Receiver
+
+
+# recieve push notifications when app is not running?
+* https://forums.xamarin.com/discussion/27205/receive-push-notifications-when-app-is-not-running
