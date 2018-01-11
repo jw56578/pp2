@@ -28,14 +28,16 @@ namespace pp2
 
             //cannot get a https request to work in IOS
             //ignoring certs works on IOS but not droid
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                System.Net.ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback(
-                    delegate{
-                      return true;
-                    }
-                );
-            }
+            //this is insane, first android worked fine without this, then it suddenly didn't work
+            //then it bombed with this here, then suddenly it worked with it here and now the http request will go through
+            //no http request will work on any platform without overriding the certvalidation callback
+
+            System.Net.ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback(
+                delegate{
+                  return true;
+                }
+            );
+            
 
            
         }

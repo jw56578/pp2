@@ -55,17 +55,12 @@ namespace pp2.Data
                 Set("Username", value);
             }
         }
+        //cache password for life of running app, not permanently
         public static string Password
         {
 
-            get
-            {
-                return Get<string>("Password");
-            }
-            set
-            {
-                Set("Password", value);
-            }
+            get;
+            set;
         }
 
         static T Get<T>(string key)
@@ -77,6 +72,7 @@ namespace pp2.Data
         static void Set(string key,object value)
         {
             App.Current.Properties[key] = value;
+            App.Current.SavePropertiesAsync();
         }
     }
 }

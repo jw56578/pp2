@@ -1,6 +1,6 @@
 ﻿## Issues
 
-* cannot get ssl http request to work through httpclient on ios, works fine on android, i have coded it to ignore ssl errors for ios, not sure if this will affect something
+* cannot get ssl http request to work through httpclient, it worked fine on android but then it didn't', i have coded it to ignore ssl , not sure if this will affect something
 * the returned message of logging in is ackward, success is always true, the only way to tell if its a problem is if error has a value
 
 
@@ -15,12 +15,11 @@
 ## Todo
 
 ## 1 Login
-* if a login is sucessful then cache the username and tennant and show it always
+
 * UI - activity indicator looks terrible, make it look better
   * make the spinner bigger and centered and the message in a better location centered in the screen
-* make login screen look better
-  * the words are being blurred by the background picture
-* make the campus key and user name already be there in a label if it has been saved in properties
+
+
 
 
 ## 2 Registration

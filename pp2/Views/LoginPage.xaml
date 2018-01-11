@@ -16,10 +16,10 @@
                 Source="background_login_page.jpg" 
                 Aspect="AspectFill"/>
     <Grid 
-    
         AbsoluteLayout.LayoutFlags="All" 
         AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
             >
+      
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -34,22 +34,22 @@
                 Orientation="Horizontal" 
                 HorizontalOptions="Center" 
                 VerticalOptions="Center">
-                <ContentView 
-                    Margin="0,10,0,0"
-                    VerticalOptions="FillAndExpand">
-                    <Image 
-                    Source="main_logo.png" 
-                    VerticalOptions="Center" 
-                    HeightRequest="64" />
-                </ContentView>
+               
             </StackLayout>
         </StackLayout>
         <ScrollView Grid.Row="1">
-            <StackLayout x:Name="Inputs"
+            <StackLayout 
+                BackgroundColor="#AAFFFFFF"
+                x:Name="Inputs"
                 Orientation="Vertical" 
-                Padding="16,40,16,40" 
-                Spacing="10">
-                <Label FontSize="22" >
+                Padding="16,0,16,0" 
+                Margin="30">
+                   
+                    <Image 
+                    Source="main_logo.png" 
+                    HeightRequest="64" />
+              
+                <Label Opacity="1" >
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
@@ -57,7 +57,7 @@
                                     Text="Welcome to your VuTeur account"
                                     ForegroundColor="Black"
                                     FontAttributes="Bold" 
-                                    FontSize="22" />
+                                    FontSize="18" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
@@ -112,7 +112,13 @@
                 Clicked="Handle_ForgotPasswordClicked"
                 Scale="0.8"/>
                 <StackLayout>
+
+           
+                        
                 <ActivityIndicator 
+
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
                     IsVisible="{Binding IsBusy}" 
                     IsRunning="{Binding IsBusy}"
                     VerticalOptions="FillAndExpand" 

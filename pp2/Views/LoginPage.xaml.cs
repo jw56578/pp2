@@ -16,9 +16,9 @@ namespace pp2.Views
         {
             InitializeComponent();
             BindingContext = viewModel = new LoginViewModel(){
-                UsernameOrEmailAddress = Settings.TestingUsername,
-                Password = Settings.TestingPassword,
-                TenancyName= Settings.TestingCampusKey
+                UsernameOrEmailAddress = Settings.Username,
+                Password ="",
+                TenancyName= Settings.TenancyName
             };
            
           AddEntries();
@@ -38,7 +38,7 @@ namespace pp2.Views
             };
             campusKey.BindingContext = viewModel;
             campusKey.SetBinding(Entry.TextProperty, "TenancyName", BindingMode.TwoWay);
-            Inputs.Children.Insert(2,campusKey);
+            Inputs.Children.Insert(3,campusKey);
 
             var username = new NoHelperEntry()
             {
@@ -46,7 +46,7 @@ namespace pp2.Views
             };
             username.BindingContext = viewModel;
             username.SetBinding(Entry.TextProperty, "UsernameOrEmailAddress", BindingMode.TwoWay);
-            Inputs.Children.Insert(4,username);
+            Inputs.Children.Insert(5,username);
 
             var password = new NoHelperEntry()
             {
@@ -54,7 +54,7 @@ namespace pp2.Views
             };
             password.BindingContext = viewModel;
             password.SetBinding(Entry.TextProperty, "Password", BindingMode.TwoWay);
-            Inputs.Children.Insert(6,password);
+            Inputs.Children.Insert(7,password);
 
         }
 
@@ -65,9 +65,24 @@ namespace pp2.Views
 
         async void Handle_LoginClicked(object sender, System.EventArgs e)
         {
+            
+            if (string.IsNullOrEmpty(viewModel.TenancyName))
+            {
+                viewModel.Message = "Please enter valid campus key";
+                return;
+            }
+            if (string.IsNullOrEmpty(viewModel.UsernameOrEmailAddress))
+            {
+                viewModel.Message = "Please enter valid Username";
+                return;
+            }
+            if(string.IsNullOrEmpty(viewModel.Password))
+            {
+                viewModel.Message = "Please enter valid password";
+                return;
+            }
             viewModel.IsBusy = true;
             viewModel.Message = "Attempting to log in";
-    
             var creds = await Authentication.AttemptToAuthenticate(viewModel.UsernameOrEmailAddress,viewModel.Password,viewModel.TenancyName);
             if(creds.IsAuthenticated)
             {
